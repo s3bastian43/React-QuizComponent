@@ -19,17 +19,27 @@
 ul {
   padding: 0;
   margin: 0;
+  list-style-type: none;
 }
-.buttons {
+
+.answers ul {
   display: flex;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between;
 }
-button {
-  margin: 0.6em auto;
-  font-size: 1.5em;
-  display: block;
+
+.answers ul li button {
+  padding: 20px 40px;
+  background: transparent;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  font-size: 22px;
+  transition: all .2s;
 }
+
+.answers ul li button:hover {
+  background: azure;
+}
+
 .error {
   color: red;
 }
