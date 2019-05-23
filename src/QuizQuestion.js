@@ -1,45 +1,19 @@
 import React, {Component} from 'react';
 import QuizQuestionButton from "./QuizQuestionButton";
-import {shuffle} from './functions';
 
 class QuizQuestion extends Component {
-    constructor(props) {
-        super(props);
-        this.state= {
-            incorrectAnswer: false,
-            correctAnswers: this.props.correctAnswers,
-            wrongAnswers: this.props.wrongAnswers,
-        }
-    }
-
-    // TODO: Lift the state up to use it in quiz end
-
     handleClick(buttonText) {
-        if(buttonText === this.props.quiz_question.correct_answer) {
-            this.props.showNextQuestionHandler();
-            this.setState(state => {
-                return {
-                    incorrectAnswer: false,
-                    correctAnswers: state.correctAnswers + 1
-                }
-            })
-        } else {
-            this.setState(state => {
-                return {
-                    incorrectAnswer: true,
-                    wrongAnswers: state.wrongAnswers + 1
-                }
-            })
-        }
-
+        this.props.checkAnswerHandler(buttonText)
     }
+
     render() {
-        if(!this.state.incorrectAnswer) {
-            this.props.quiz_question.incorrect_answers.push(this.props.quiz_question.correct_answer);
-            this.props.quiz_question.incorrect_answers = shuffle(this.props.quiz_question.incorrect_answers);
-        }
         return (
             <main>
+                <h3>
+                    {
+                        'Q' + (this.props.currentPosition + 1) + '/' + this.props.questionsLength
+                    }
+                </h3>
                 <section>
                     <p>{this.props.quiz_question.question}</p>
                 </section>
@@ -52,13 +26,12 @@ class QuizQuestion extends Component {
                         }
                     </ul>
                 </section>
-                {this.state.correctAnswers + ' ' + this.state.wrongAnswers}
 
-                {this.state.incorrectAnswer ?
+      {/*          {this.props.incorrectAnswer ?
                     <div className="alert alert-danger mt-3" role="alert">
                          Sorry, that's not right
                     </div>
-                : null}
+                : null}*/}
 
 
             </main>

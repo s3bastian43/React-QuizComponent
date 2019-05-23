@@ -3,3 +3,23 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.loading-container {
+  min-height: 240px;
+}
+
+.done-illustration h3 {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.done-illustration img {
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+}
+
+.done-illustration .btn-primary {
+  margin: 30px auto 0;
+  display: table;
+}
