@@ -43,3 +43,20 @@ ul {
 .error {
   color: red;
 }
+
+.quiz-category {
+  padding: 20px 40px;
+  background: transparent;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: all .2s;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.quiz-category:hover {
+  background: azure;
+  text-decoration: none;
+}

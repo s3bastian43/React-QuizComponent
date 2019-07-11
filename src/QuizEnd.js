@@ -21,7 +21,7 @@ class QuizEnd extends Component {
                     :
                     <img src={bravoI} alt="Congratulations illustration"/>
                 }
-                <a href='' onClick={this.handleResetClick} className="btn btn-primary btn-lg">Reset Quiz</a>
+                <a href='/' onClick={this.handleResetClick} className="btn btn-primary btn-lg">Reset Quiz</a>
             </div>
         );
     }

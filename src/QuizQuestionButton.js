@@ -9,7 +9,7 @@ class QuizQuestionButton extends Component {
         return (
             <li>
                 <button onClick={this.handleClick.bind(this)}>
-                    {this.props.button_text}
+                    {decodeURIComponent(this.props.button_text)}
                 </button>
             </li>
         );

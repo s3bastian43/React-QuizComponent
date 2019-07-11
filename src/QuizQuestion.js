@@ -15,7 +15,7 @@ class QuizQuestion extends Component {
                     }
                 </h3>
                 <section>
-                    <p>{this.props.quiz_question.question}</p>
+                    <p>{decodeURIComponent(this.props.quiz_question.question)}</p>
                 </section>
                 <section className="answers">
                     <ul>

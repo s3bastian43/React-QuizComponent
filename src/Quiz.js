@@ -4,6 +4,7 @@ import QuizEnd from "./QuizEnd";
 import axios from 'axios';
 import {shuffle} from "./functions";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import {Link} from "react-router-dom";
 
 class Quiz extends Component {
     constructor(props) {
@@ -13,14 +14,15 @@ class Quiz extends Component {
             questions: [],
             incorrectAnswer: false,
             correctAnswers: 0,
-            wrongAnswers: 0
+            wrongAnswers: 0,
+            id: props.match.params.id
         }
     }
 
     componentDidMount() {
         axios.get(`https://opentdb.com/api_token.php?command=request`)
             .then(res => {
-                return axios.get(`https://opentdb.com/api.php?amount=2&token=${res.data.token}&category=22&difficulty=easy&type=multiple`)
+                return axios.get(`https://opentdb.com/api.php?amount=10&token=${res.data.token}&category=${this.state.id}&difficulty=easy&type=multiple&encode=url3986`)
             })
             .then(res => {
                 const questions = []
@@ -33,6 +35,8 @@ class Quiz extends Component {
                 console.log(err)
             })
     }
+
+
 
     checkAnswer(buttonText) {
         if (buttonText === this.state.questions[this.state.quiz_position - 1].correct_answer) {
@@ -83,7 +87,10 @@ class Quiz extends Component {
             <div className="container py-4">
                 <div className="row">
                     <div className="col-12">
-                        <h1>Trivia Game</h1>
+                        <div className="d-flex align-items-center justify-content-between">
+                            <h1>Trivia Game</h1>
+                            <Link to="/" className="btn btn-outline-primary">Back</Link>
+                        </div>
 
                         {this.state.questions.length > 0 ?
 
